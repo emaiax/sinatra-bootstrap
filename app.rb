@@ -1,4 +1,5 @@
 configure do
+  set :public_folder, Proc.new { File.join(root, "static") }
   set :haml, :layout => :application
 end
 
