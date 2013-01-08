@@ -15,7 +15,23 @@
           %ul.nav
             %li
               %a{:href => "/"} Home
+            %li
+              %a{:href => "/secure/place"} Secret
+          %ul.nav.pull-right
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = username
+                %b.caret
+              %ul.dropdown-menu
+                - if user_signed_in?
+                  %li
+                    %a{:href => "/logout"} Logout
+                - else
+                  %li
+                    %a{:href => "/login"} Login
 
     #middle.container
+      - if @error
+        .alert.alert-error= @error
       = yield
 
