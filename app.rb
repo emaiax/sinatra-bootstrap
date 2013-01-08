@@ -1,7 +1,7 @@
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
   set :haml, :layout => :application
-  enable :sessions
+  use Rack::Session::Cookie, :key => 'rack.session', :secret => 'change_me', :expire_after => 2592000 # In seconds
 end
 
 helpers do
